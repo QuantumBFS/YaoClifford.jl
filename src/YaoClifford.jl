@@ -1,5 +1,16 @@
 module YaoClifford
 
-# Write your package code here.
+using Yao
+using QuantumClifford
+using BitBasis
+using LinearAlgebra
+
+export StabilizerReg,
+    zero_stabilizer_state,
+    rand_stabilizer_state
+
+include("stabilizer_reg.jl")
+include("instruct.jl")
+include("measure.jl")
 
 end

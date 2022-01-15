@@ -3,11 +3,17 @@ uuid = "1b91db8e-fb8d-428e-b6a7-1300684f2dc5"
 authors = ["Chen Zhao <zhaochen17@mails.ucas.ac.cn> and contributors"]
 version = "0.1.0"
 
-[extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+[deps]
+BitBasis = "50ba71b6-fa0f-514d-ae9a-0916efc90dcf"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+QuantumClifford = "0525e862-1e90-11e9-3e4d-1b39d7109de1"
+Yao = "5872b779-8223-5990-8dd0-5abbb0748c8c"
 
 [compat]
 julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
