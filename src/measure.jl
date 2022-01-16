@@ -22,3 +22,25 @@ function Yao.measure!(reg::StabilizerReg)
     end
     return BitStr{n, typeof(meas_res)}(meas_res)
 end
+
+function Yao.expect(op::Add, reg::StabilizerReg)
+    return sum(Yao.expect(o, reg) for o in op)
+end
+function Yao.expect(op::Scale, reg::StabilizerReg)
+    c = op.alpha
+    c === Val(-1) && (c = -1)
+    c === Val(im) && (c = im)
+    c === Val(-im) && (c = -im)
+    return c * Yao.expect(op.content, reg)
+end
+function Yao.expect(op::PauliString, reg::StabilizerReg)
+    Yao.nqubits(op) == Yao.nqubits(reg) || error("The number of qubits does not match!")
+    n = Yao.nqubits(op)
+    p = zero(PauliOperator, n)
+    for i = 1:n
+        op[i] === Yao.X && (p[i] = (true, false))
+        op[i] === Yao.Y && (p[i] = (true, true))
+        op[i] === Yao.Z && (p[i] = (false, true))
+    end
+    return QuantumClifford.expect(p, reg.st)
+end
