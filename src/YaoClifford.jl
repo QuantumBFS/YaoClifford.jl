@@ -2,6 +2,7 @@ module YaoClifford
 
 using Yao
 using QuantumClifford
+using YaoExtensions
 using BitBasis
 using LinearAlgebra
 
