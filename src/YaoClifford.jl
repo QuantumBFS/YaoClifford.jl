@@ -2,13 +2,14 @@ module YaoClifford
 
 using Yao
 using QuantumClifford
-using YaoExtensions
+# using YaoExtensions
 using BitBasis
 using LinearAlgebra
 
 export StabilizerReg,
     zero_stabilizer_state,
-    rand_stabilizer_state
+    rand_stabilizer_state,
+    PauliString
 
 include("stabilizer_reg.jl")
 include("instruct.jl")

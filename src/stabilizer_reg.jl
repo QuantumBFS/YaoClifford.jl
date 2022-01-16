@@ -64,6 +64,14 @@ end
 Yao.invorder!(reg::StabilizerReg) = Yao.reorder!(reg, Yao.nqubits(reg):-1:1)
 Yao.invorder(reg::StabilizerReg) = Yao.invorder!(copy(reg))
 
+PauliString{N} = KronBlock{N, N, <:NTuple{N,Yao.YaoBlocks.PauliGate}}
+"""
+    PauliString(paulis...)
+
+Generate a `KronBlock` to represent a Pauli operator.
+"""
+PauliString(args::YaoBlocks.PauliGate...) = kron(args...)
+
 # focus!
 # insert_qubits!
 # collapseto!
